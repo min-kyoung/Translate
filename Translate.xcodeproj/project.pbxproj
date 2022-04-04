@@ -9,18 +9,18 @@
 /* Begin PBXBuildFile section */
 		A943ABE727FB0F970057E803 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943ABE627FB0F970057E803 /* AppDelegate.swift */; };
 		A943ABE927FB0F970057E803 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943ABE827FB0F970057E803 /* SceneDelegate.swift */; };
-		A943ABEB27FB0F970057E803 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943ABEA27FB0F970057E803 /* ViewController.swift */; };
-		A943ABEE27FB0F970057E803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A943ABEC27FB0F970057E803 /* Main.storyboard */; };
+		A943ABEB27FB0F970057E803 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943ABEA27FB0F970057E803 /* TabBarController.swift */; };
 		A943ABF027FB0F9B0057E803 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A943ABEF27FB0F9B0057E803 /* Assets.xcassets */; };
 		A943ABF327FB0F9B0057E803 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A943ABF127FB0F9B0057E803 /* LaunchScreen.storyboard */; };
+		A943ABFC27FB0FC50057E803 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A943ABFB27FB0FC50057E803 /* Alamofire */; };
+		A943ABFF27FB0FD80057E803 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A943ABFE27FB0FD80057E803 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A943ABE327FB0F970057E803 /* Translate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A943ABE627FB0F970057E803 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A943ABE827FB0F970057E803 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A943ABEA27FB0F970057E803 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A943ABED27FB0F970057E803 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A943ABEA27FB0F970057E803 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A943ABEF27FB0F9B0057E803 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A943ABF227FB0F9B0057E803 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A943ABF427FB0F9B0057E803 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +31,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A943ABFC27FB0FC50057E803 /* Alamofire in Frameworks */,
+				A943ABFF27FB0FD80057E803 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,8 +60,7 @@
 			children = (
 				A943ABE627FB0F970057E803 /* AppDelegate.swift */,
 				A943ABE827FB0F970057E803 /* SceneDelegate.swift */,
-				A943ABEA27FB0F970057E803 /* ViewController.swift */,
-				A943ABEC27FB0F970057E803 /* Main.storyboard */,
+				A943ABEA27FB0F970057E803 /* TabBarController.swift */,
 				A943ABEF27FB0F9B0057E803 /* Assets.xcassets */,
 				A943ABF127FB0F9B0057E803 /* LaunchScreen.storyboard */,
 				A943ABF427FB0F9B0057E803 /* Info.plist */,
@@ -83,6 +84,10 @@
 			dependencies = (
 			);
 			name = Translate;
+			packageProductDependencies = (
+				A943ABFB27FB0FC50057E803 /* Alamofire */,
+				A943ABFE27FB0FD80057E803 /* SnapKit */,
+			);
 			productName = Translate;
 			productReference = A943ABE327FB0F970057E803 /* Translate.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,10 @@
 				Base,
 			);
 			mainGroup = A943ABDA27FB0F970057E803;
+			packageReferences = (
+				A943ABFA27FB0FC50057E803 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A943ABFD27FB0FD80057E803 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = A943ABE427FB0F970057E803 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +136,6 @@
 			files = (
 				A943ABF327FB0F9B0057E803 /* LaunchScreen.storyboard in Resources */,
 				A943ABF027FB0F9B0057E803 /* Assets.xcassets in Resources */,
-				A943ABEE27FB0F970057E803 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A943ABEB27FB0F970057E803 /* ViewController.swift in Sources */,
+				A943ABEB27FB0F970057E803 /* TabBarController.swift in Sources */,
 				A943ABE727FB0F970057E803 /* AppDelegate.swift in Sources */,
 				A943ABE927FB0F970057E803 /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +155,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A943ABEC27FB0F970057E803 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A943ABED27FB0F970057E803 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A943ABF127FB0F9B0057E803 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +294,6 @@
 				INFOPLIST_FILE = Translate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +321,6 @@
 				INFOPLIST_FILE = Translate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,6 +358,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A943ABFA27FB0FC50057E803 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.5.0;
+			};
+		};
+		A943ABFD27FB0FD80057E803 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A943ABFB27FB0FC50057E803 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A943ABFA27FB0FC50057E803 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A943ABFE27FB0FD80057E803 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A943ABFD27FB0FD80057E803 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A943ABDB27FB0F970057E803 /* Project object */;
 }
