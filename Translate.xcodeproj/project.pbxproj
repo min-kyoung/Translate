@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A92992A527FB13EE00E40E00 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92992A427FB13EE00E40E00 /* TranslateViewController.swift */; };
+		A92FDBB227FB493800E90D1A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92FDBB127FB493800E90D1A /* UIColor+.swift */; };
 		A943ABE727FB0F970057E803 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943ABE627FB0F970057E803 /* AppDelegate.swift */; };
 		A943ABE927FB0F970057E803 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943ABE827FB0F970057E803 /* SceneDelegate.swift */; };
 		A943ABEB27FB0F970057E803 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943ABEA27FB0F970057E803 /* TabBarController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A92992A427FB13EE00E40E00 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
+		A92FDBB127FB493800E90D1A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		A943ABE327FB0F970057E803 /* Translate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A943ABE627FB0F970057E803 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A943ABE827FB0F970057E803 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A92992A627FB13F300E40E00 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A943ABEA27FB0F970057E803 /* TabBarController.swift */,
+				A92992A427FB13EE00E40E00 /* TranslateViewController.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		A943ABDA27FB0F970057E803 = {
 			isa = PBXGroup;
 			children = (
@@ -60,7 +73,8 @@
 			children = (
 				A943ABE627FB0F970057E803 /* AppDelegate.swift */,
 				A943ABE827FB0F970057E803 /* SceneDelegate.swift */,
-				A943ABEA27FB0F970057E803 /* TabBarController.swift */,
+				A92FDBB127FB493800E90D1A /* UIColor+.swift */,
+				A92992A627FB13F300E40E00 /* Scenes */,
 				A943ABEF27FB0F9B0057E803 /* Assets.xcassets */,
 				A943ABF127FB0F9B0057E803 /* LaunchScreen.storyboard */,
 				A943ABF427FB0F9B0057E803 /* Info.plist */,
@@ -147,8 +161,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A943ABEB27FB0F970057E803 /* TabBarController.swift in Sources */,
+				A92992A527FB13EE00E40E00 /* TranslateViewController.swift in Sources */,
 				A943ABE727FB0F970057E803 /* AppDelegate.swift in Sources */,
 				A943ABE927FB0F970057E803 /* SceneDelegate.swift in Sources */,
+				A92FDBB227FB493800E90D1A /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

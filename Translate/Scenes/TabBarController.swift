@@ -12,7 +12,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let translateViewController = UIViewController()
+        let translateViewController = TranslateViewController()
         translateViewController.tabBarItem = UITabBarItem(
             title: "translate",
             image: UIImage(systemName: "mic"),
