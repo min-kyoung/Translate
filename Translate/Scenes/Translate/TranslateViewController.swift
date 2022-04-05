@@ -79,6 +79,10 @@ class TranslateViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .systemBackground
         
+        // UIView 타입인 경우 UIButton처럼 addTarget에 대한 response가 없다. 따라서 UITapGestureRecognizer로 UIButton처럼 탭 액션에 대한 동작을 구현한다.
+        let tabGesture = UITapGestureRecognizer(target: self, action: #selector(didTapSourceLabelBaseView))
+        view.addGestureRecognizer(tabGesture)
+        
         return view
     }()
     
@@ -100,6 +104,16 @@ class TranslateViewController: UIViewController {
         view.backgroundColor = .secondarySystemBackground
         
         setupViews()
+    }
+}
+
+// SourceTextViewController에서 설정한 delegate 프로토콜을 따르도록 설정
+extension TranslateViewController: SourceTextViewControllerDelegate {
+    func didEnterText(_ sourceText: String) {
+        if sourceText == "" { return }
+        
+        sourceLabel.text = sourceText
+        sourceLabel.textColor = .label
     }
 }
 
@@ -161,4 +175,10 @@ private extension TranslateViewController {
             $0.top.equalTo(sourceLabelBaseView.snp.top).inset(24.0)
         }
     }
+    
+    @objc func didTapSourceLabelBaseView() {
+        let viewController = SourceTextViewController(delegate: self)
+        present(viewController, animated: true)
+    }
+    
 }
