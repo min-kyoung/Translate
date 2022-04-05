@@ -8,26 +8,54 @@
 import SnapKit
 import UIKit
 
+enum Language: CaseIterable { // enum을 array로 활용하여 actionSheet에 추가하기 위해 CaseIterable 사용
+    case ko
+    case en
+    case ja
+    case ch
+    
+    var title: String {
+        switch self {
+        case .ko: return "한국어"
+        case .en: return "영어"
+        case .ja: return "일본어"
+        case .ch: return "중국어"
+        }
+    }
+}
+
+enum Category {
+    case source
+    case target
+}
+
 class TranslateViewController: UIViewController {
+    private var sourceLanguage: Language = .ko // 변역 전 언어
+    private var targetLanguage: Language = .en // 변역 후 언어
+    
     // MARK: button
     private lazy var sourceLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("한국어", for: .normal)
+        button.setTitle(sourceLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 9.0
+        
+        button.addTarget(self, action: #selector(didTapSourceLanguageButton), for: .touchUpInside)
         
         return button
     }()
     
     private lazy var targetLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("영어", for: .normal)
+        button.setTitle(targetLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
         button.layer.cornerRadius = 9.0
+        
+        button.addTarget(self, action: #selector(didTapTargetLanguageButton), for: .touchUpInside)
         
         return button
     }()
@@ -179,6 +207,36 @@ private extension TranslateViewController {
     @objc func didTapSourceLabelBaseView() {
         let viewController = SourceTextViewController(delegate: self)
         present(viewController, animated: true)
+    }
+    
+    // 바꾸려는 언어가 sourceLanguage인지 targetLanguage인지 구분을 해주기 위해 누구를 바꿀지 기억할 수 있도록 하는 파라미터 Category를 만듦
+    func didTapLanguageButton(type: Category) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        Language.allCases.forEach { language in
+            let action = UIAlertAction(title: language.title, style: .default) { [weak self] _ in
+                switch type {
+                case .source:
+                    self?.sourceLanguage = language
+                    self?.sourceLanguageButton.setTitle(language.title, for: .normal)
+                case .target:
+                    self?.targetLanguage = language
+                    self?.targetLanguageButton.setTitle(language.title, for: .normal)
+                }
+            }
+            alertController.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "취소하기", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
+    }
+    
+    @objc func didTapSourceLanguageButton() {
+        didTapLanguageButton(type: .source)
+    }
+    
+    @objc func didTapTargetLanguageButton() {
+        didTapLanguageButton(type: .target)
     }
     
 }
