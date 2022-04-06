@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
             selectedImage: UIImage(systemName: "mic.fill")
         )
         
-        let bookmarkViewController = UIViewController()
+        let bookmarkViewController = UINavigationController(rootViewController: BookmarkListViewController()) 
         bookmarkViewController.tabBarItem = UITabBarItem(
             title: "bookmark",
             image: UIImage(systemName: "star"),

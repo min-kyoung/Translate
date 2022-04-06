@@ -13,5 +13,5 @@ struct Bookmark: Codable {
     let targetLanguage: Language
     
     let sourceText: String
-    let resultText: String
+    let targetText: String
 }

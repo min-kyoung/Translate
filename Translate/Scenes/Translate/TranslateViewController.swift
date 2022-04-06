@@ -8,11 +8,6 @@
 import SnapKit
 import UIKit
 
-enum Category {
-    case source
-    case target
-}
-
 class TranslateViewController: UIViewController {
     private var sourceLanguage: Language = .ko // 변역 전 언어
     private var targetLanguage: Language = .en // 변역 후 언어
@@ -97,7 +92,7 @@ class TranslateViewController: UIViewController {
             sourceLanguage: sourceLanguage,
             targetLanguage: targetLanguage,
             sourceText: sourceText,
-            resultText: resultText
+            targetText: resultText
         )
         // UserDefaults에 새로운 값 저장
         UserDefaults.standard.bookmarks = [newBookmark] + currentBookmarks // newBookmark가 상위에 오도록 함
