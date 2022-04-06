@@ -89,7 +89,7 @@ class TranslateViewController: UIViewController {
             resultBookmarkButton.imageView?.image == UIImage(systemName: "bookmark") // bookmark.fill == bookmark 된 상태
         else { return }
         
-        resultBookmarkButton.setImage(UIImage(systemName: "bookmark.flll"), for: .normal)
+        resultBookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
         
         // 현재의 배열에 새로운 값을 추가하는 것, 기존의 배열에 새로운 bookmark의 property를 정의해서 append 시켜줌
         let currentBookmarks: [Bookmark] = UserDefaults.standard.bookmarks
@@ -106,9 +106,14 @@ class TranslateViewController: UIViewController {
     private lazy var resultCopyButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "doc.on.doc"), for: .normal)
-        
+        button.addTarget(self, action: #selector(didTapCopyButton), for: .touchUpInside)
+    
         return button
     }()
+    
+    @objc func didTapCopyButton() {
+        UIPasteboard.general.string = resultLabel.text
+    }
     
     // MARK: source
     private lazy var sourceLabelBaseView: UIView = {
