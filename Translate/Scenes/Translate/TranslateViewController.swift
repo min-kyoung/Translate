@@ -8,22 +8,6 @@
 import SnapKit
 import UIKit
 
-enum Language: CaseIterable { // enum을 array로 활용하여 actionSheet에 추가하기 위해 CaseIterable 사용
-    case ko
-    case en
-    case ja
-    case ch
-    
-    var title: String {
-        switch self {
-        case .ko: return "한국어"
-        case .en: return "영어"
-        case .ja: return "일본어"
-        case .ch: return "중국어"
-        }
-    }
-}
-
 enum Category {
     case source
     case target
@@ -91,9 +75,33 @@ class TranslateViewController: UIViewController {
     private lazy var resultBookmarkButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        button.addTarget(self, action: #selector(didTapBookmarkButton), for: .touchUpInside)
         
         return button
     }()
+    
+    @objc func didTapBookmarkButton() {
+        // bookmark 기능이 실행되기 위해서는 resultBaseView와 sourceLabelBaseView에 값이 있어야 함 (placeholder 상태에서는 실행되면 안됨)
+        // 아이콘이 bookmark.fill이 되었는지에 따라서 bookrmark 여부를 구분
+        guard
+            let sourceText = sourceLabel.text,
+            let resultText = resultLabel.text,
+            resultBookmarkButton.imageView?.image == UIImage(systemName: "bookmark") // bookmark.fill == bookmark 된 상태
+        else { return }
+        
+        resultBookmarkButton.setImage(UIImage(systemName: "bookmark.flll"), for: .normal)
+        
+        // 현재의 배열에 새로운 값을 추가하는 것, 기존의 배열에 새로운 bookmark의 property를 정의해서 append 시켜줌
+        let currentBookmarks: [Bookmark] = UserDefaults.standard.bookmarks
+        let newBookmark = Bookmark(
+            sourceLanguage: sourceLanguage,
+            targetLanguage: targetLanguage,
+            sourceText: sourceText,
+            resultText: resultText
+        )
+        // UserDefaults에 새로운 값 저장
+        UserDefaults.standard.bookmarks = [newBookmark] + currentBookmarks // newBookmark가 상위에 오도록 함
+    }
     
     private lazy var resultCopyButton: UIButton = {
         let button = UIButton()
@@ -121,7 +129,6 @@ class TranslateViewController: UIViewController {
         // placeholder
         label.text = "번역할 문자를 입력해주세요."
         label.textColor = .tertiaryLabel
-        // TODO : sourceLabel에 입력값이 추가되면 placeholder 스타일 해제시키기
         
         return label
     }()
@@ -142,6 +149,9 @@ extension TranslateViewController: SourceTextViewControllerDelegate {
         
         sourceLabel.text = sourceText
         sourceLabel.textColor = .label
+        
+        // 새로운 값이 들어오면 bookmark 상태도 리셋
+        resultBookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
     }
 }
 
