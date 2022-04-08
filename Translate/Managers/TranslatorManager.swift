@@ -22,12 +22,11 @@ struct TranslatorManager {
             text: text
         )
         
-        let clientAPI = Bundle.main.clientKey
         let secretAPI = Bundle.main.secretKey
         
         // header를 dictionary로 만듦
         let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": "\(clientAPI)", //client id
+            "X-Naver-Client-Id": "NHYRCkYdKQwVV8Zg_9Da", //client id
             "X-Naver-Client-Secret": "\(secretAPI)" // secret id
         ]
         

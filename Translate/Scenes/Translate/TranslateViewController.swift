@@ -9,13 +9,12 @@ import SnapKit
 import UIKit
 
 class TranslateViewController: UIViewController {
-    private var sourceLanguage: Language = .ko // 변역 전 언어
-    private var targetLanguage: Language = .en // 변역 후 언어
-    
+    private var translatorManager = TranslatorManager()
+
     // MARK: button
     private lazy var sourceLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle(sourceLanguage.title, for: .normal)
+        button.setTitle(translatorManager.sourceLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
@@ -28,7 +27,7 @@ class TranslateViewController: UIViewController {
     
     private lazy var targetLanguageButton: UIButton = {
         let button = UIButton()
-        button.setTitle(targetLanguage.title, for: .normal)
+        button.setTitle(translatorManager.targetLanguage.title, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.label, for: .normal)
         button.backgroundColor = .systemBackground
@@ -89,8 +88,8 @@ class TranslateViewController: UIViewController {
         // 현재의 배열에 새로운 값을 추가하는 것, 기존의 배열에 새로운 bookmark의 property를 정의해서 append 시켜줌
         let currentBookmarks: [Bookmark] = UserDefaults.standard.bookmarks
         let newBookmark = Bookmark(
-            sourceLanguage: sourceLanguage,
-            targetLanguage: targetLanguage,
+            sourceLanguage: translatorManager.sourceLanguage,
+            targetLanguage: translatorManager.targetLanguage,
             sourceText: sourceText,
             targetText: resultText
         )
@@ -149,6 +148,10 @@ extension TranslateViewController: SourceTextViewControllerDelegate {
         
         sourceLabel.text = sourceText
         sourceLabel.textColor = .label
+        
+        translatorManager.request(from: sourceText) { [weak self] translatedText in
+            self?.resultLabel.text = translatedText
+        }
         
         // 새로운 값이 들어오면 bookmark 상태도 리셋
         resultBookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
@@ -226,10 +229,10 @@ private extension TranslateViewController {
             let action = UIAlertAction(title: language.title, style: .default) { [weak self] _ in
                 switch type {
                 case .source:
-                    self?.sourceLanguage = language
+                    self?.translatorManager.sourceLanguage = language
                     self?.sourceLanguageButton.setTitle(language.title, for: .normal)
                 case .target:
-                    self?.targetLanguage = language
+                    self?.translatorManager.targetLanguage = language
                     self?.targetLanguageButton.setTitle(language.title, for: .normal)
                 }
             }
