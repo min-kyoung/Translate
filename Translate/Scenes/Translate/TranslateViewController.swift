@@ -126,7 +126,7 @@ class TranslateViewController: UIViewController {
         label.font = .systemFont(ofSize: 23.0, weight: .semibold)
         label.numberOfLines = 0
         // placeholder
-        label.text = "번역할 문자를 입력해주세요."
+        label.text = NSLocalizedString("Enter_Text", comment: "텍스트 입력")
         label.textColor = .tertiaryLabel
         
         return label
@@ -238,7 +238,11 @@ private extension TranslateViewController {
             }
             alertController.addAction(action)
         }
-        let cancelAction = UIAlertAction(title: "취소하기", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(
+            title: NSLocalizedString("Cancel", comment: "취소하기"),
+            style: .cancel,
+            handler: nil
+        )
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true)

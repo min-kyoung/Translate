@@ -35,7 +35,7 @@ class BookmarkListViewController: UIViewController {
         
         setUpLayout()
         
-        navigationItem.title = "Bookmark"
+        navigationItem.title = NSLocalizedString("Bookmark", comment: "즐겨찾기")
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     

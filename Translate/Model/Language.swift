@@ -17,10 +17,10 @@ enum Language: String, CaseIterable, Codable {
     
     var title: String {
         switch self {
-        case .ko: return "한국어"
-        case .en: return "영어"
-        case .ja: return "일본어"
-        case .ch: return "중국어"
+        case .ko: return NSLocalizedString("Korean", comment: "한국어")
+        case .en: return NSLocalizedString("English", comment: "영어")
+        case .ja: return NSLocalizedString("Japanese", comment: "일본어")
+        case .ch: return NSLocalizedString("Chinese", comment: "중국어")
         }
     }
     
